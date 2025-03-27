@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stickman Games Online - Play Count Masters Stickman Games</title>
+    <meta name="description" content="Play Count Masters Stickman Games online for free. Enjoy the best stickman games with smooth gameplay and exciting challenges.">
+    <link rel="canonical" href="https://stickmangamesonline.store/" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <style>
+        :root {
+            --apple-blue: #007AFF;
+            --apple-green: #34C759;
+            --apple-indigo: #5856D6;
+            --apple-orange: #FF9500;
+            --apple-pink: #FF2D55;
+            --apple-purple: #AF52DE;
+            --apple-red: #FF3B30;
+            --apple-teal: #5AC8FA;
+            --apple-yellow: #FFCC00;
+            --apple-gray: #8E8E93;
+            --apple-gray2: #AEAEB2;
+            --apple-gray3: #C7C7CC;
+            --apple-gray4: #D1D1D6;
+            --apple-gray5: #E5E5EA;
+            --apple-gray6: #F2F2F7;
+        }
+        
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideIn {
+            0% {
+                transform: translateX(-100px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+                Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+            color: #333;
+            background: linear-gradient(-45deg, #007AFF, #5856D6, #AF52DE, #007AFF);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        
+        .game-container {
+            aspect-ratio: 16 / 9;
+            width: 100%;
+            max-width: 75%;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 6px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            transition: all 0.5s ease;
+        }
+        
+        .game-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--apple-blue);
+        }
+        
+        .game-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .header-gradient {
+            background: transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 10%, transparent 10.5%);
+            background-size: 20px 20px;
+            opacity: 0.3;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, var(--apple-blue), var(--apple-indigo));
+            background-size: 200% auto;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid white;
+            animation: pulse 2s infinite;
+        }
+        
+        .btn-primary:hover {
+            background-position: right center;
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            animation: none;
+        }
+        
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+            transform: rotate(30deg);
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+        
+        .btn-primary:hover::after {
+            opacity: 1;
+            transform: rotate(30deg) translate(10%, 10%);
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            transition: all 0.5s ease;
+            border: 3px solid transparent;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+        }
+        
+        .feature-card:nth-child(1) {
+            border-image: linear-gradient(to bottom, var(--apple-blue), var(--apple-teal)) 1;
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        .feature-card:nth-child(2) {
+            border-image: linear-gradient(to bottom, var(--apple-green), var(--apple-yellow)) 1;
+            animation: slideIn 0.5s ease-out 0.2s backwards;
+        }
+        
+        .feature-card:nth-child(3) {
+            border-image: linear-gradient(to bottom, var(--apple-purple), var(--apple-pink)) 1;
+            animation: slideIn 0.5s ease-out 0.4s backwards;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            z-index: 1;
+        }
+        
+        .feature-card .icon-container {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .main-container {
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .play-container {
+            animation-delay: 0.1s;
+        }
+        
+        .about-container {
+            animation-delay: 0.3s;
+        }
+        
+        .howto-container {
+            animation-delay: 0.5s;
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(90deg, var(--apple-blue), var(--apple-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--apple-blue), var(--apple-purple));
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+        
+        .section-title:hover::after {
+            width: 100%;
+        }
+        
+        .play-now-btn {
+            animation: bounce 2s infinite;
+        }
+        
+        .menu-item {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-item::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: white;
+            transition: width 0.3s ease;
+        }
+        
+        .menu-item:hover::after {
+            width: 100%;
+        }
+        
+        .nav-logo {
+            transition: all 0.3s ease;
+        }
+        
+        .nav-logo:hover {
+            transform: scale(1.05);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        .glowing-border {
+            position: relative;
+        }
+        
+        .glowing-border::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            z-index: -1;
+            background: linear-gradient(135deg, var(--apple-blue), var(--apple-purple), var(--apple-pink), var(--apple-orange));
+            background-size: 400% 400%;
+            animation: gradientBG 3s ease infinite;
+            border-radius: 15px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .glowing-border:hover::before {
+            opacity: 1;
+        }
+        
+        .icon-pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        .list-item {
+            transition: transform 0.3s ease;
+            cursor: default;
+        }
+        
+        .list-item:hover {
+            transform: translateX(5px);
+            color: var(--apple-blue);
+        }
+        
+        @media (max-width: 640px) {
+            .game-container {
+                aspect-ratio: 4 / 3;
+                max-width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header-gradient text-white py-8 px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto header-content">
+            <nav class="flex justify-between items-center mb-8">
+                <a href="/" class="nav-logo text-2xl font-bold">StickmanGamesOnline</a>
+                <div class="flex space-x-6">
+                    <a href="#features" class="menu-item hover:text-apple-gray5">Features</a>
+                    <a href="#about" class="menu-item hover:text-apple-gray5">About</a>
+                    <a href="#play" class="menu-item hover:text-apple-gray5">Play Now</a>
+                </div>
+            </nav>
+            
+            <div class="text-center py-8">
+                <h1 class="text-4xl sm:text-5xl font-bold mb-4 drop-shadow-lg">Count Masters: Stickman Games</h1>
+                <p class="text-xl mb-8 drop-shadow-md">Experience the thrilling world of stickman combat in this addictive multiplayer game!</p>
+                <a href="#play" class="play-now-btn btn-primary inline-block px-8 py-4 rounded-lg font-semibold text-lg">Play Now</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <section id="play" class="mb-16 main-container play-container">
+            <h2 class="text-3xl font-bold text-center mb-10 section-title">Play Count Masters: Stickman Games</h2>
+            <div class="w-full flex justify-center">
+                <div class="game-container glowing-border">
+                    <iframe src="https://www.crazygames.com/embed/count-masters-stickman-games" class="game-iframe" allow="fullscreen" allowfullscreen title="Count Masters: Stickman Games"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="mb-16 main-container about-container">
+            <h2 class="text-3xl font-bold text-center mb-10 section-title">About The Game</h2>
+            <div class="bg-white p-8 rounded-xl shadow-md border-2 border-apple-teal">
+                <p class="mb-4">Count Masters: Stickman Games is an exciting multiplayer game where you control a group of stickman warriors. Your goal is to grow your army by collecting stickmen and defeating enemies in various challenging levels.</p>
+                <p class="mb-4">The game features simple yet addictive gameplay mechanics. You start with a small group of stick figures and must navigate through obstacles while collecting more teammates. Face off against enemy groups in epic battles where numbers matter!</p>
+                <p>With colorful graphics, smooth animations, and progressively challenging levels, Count Masters: Stickman Games offers hours of entertainment for players of all ages.</p>
+            </div>
+        </section>
+
+        <section id="features" class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <div class="feature-card p-6">
+                <div class="icon-container w-16 h-16 bg-apple-blue rounded-full flex items-center justify-center text-white mb-6 mx-auto">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 icon-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                </div>
+                <h2 class="text-2xl font-bold mb-4 text-center">Fast-Paced Action</h2>
+                <p class="text-center">Experience thrilling gameplay with quick decisions and rapid progression through exciting levels.</p>
+            </div>
+            
+            <div class="feature-card p-6">
+                <div class="icon-container w-16 h-16 bg-apple-green rounded-full flex items-center justify-center text-white mb-6 mx-auto">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 icon-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                </div>
+                <h2 class="text-2xl font-bold mb-4 text-center">Army Building</h2>
+                <p class="text-center">Grow your stickman army from a small group to a massive crowd and overwhelm your opponents.</p>
+            </div>
+            
+            <div class="feature-card p-6">
+                <div class="icon-container w-16 h-16 bg-apple-purple rounded-full flex items-center justify-center text-white mb-6 mx-auto">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 icon-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                    </svg>
+                </div>
+                <h2 class="text-2xl font-bold mb-4 text-center">Multiple Levels</h2>
+                <p class="text-center">Progress through various challenging stages with increasing difficulty and unique obstacles.</p>
+            </div>
+        </section>
+
+        <section class="bg-white p-8 rounded-xl shadow-md mb-16 border-2 border-apple-orange main-container howto-container">
+            <h2 class="text-3xl font-bold text-center mb-10 section-title">How To Play</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <ol class="list-decimal pl-5 space-y-4">
+                        <li class="list-item">Control your stickman army by dragging left or right.</li>
+                        <li class="list-item">Collect more stickmen by running over number gates.</li>
+                        <li class="list-item">Avoid obstacles and enemy armies that are larger than yours.</li>
+                        <li class="list-item">Defeat enemies by having a larger army when you collide.</li>
+                        <li class="list-item">Complete all challenges to progress to the next level.</li>
+                    </ol>
+                </div>
+                <div>
+                    <p class="mb-4">The game is easy to learn but challenging to master. Your strategy will determine how successfully you can grow and maintain your army.</p>
+                    <p>Perfect for quick gaming sessions or extended play, Count Masters: Stickman Games offers entertainment value for everyone!</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8 px-4">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h2 class="text-2xl font-bold">StickmanGamesOnline</h2>
+                    <p>The best place to play stickman games online.</p>
+                </div>
+                <div>
+                    <p>&copy; 2023 StickmanGamesOnline. All rights reserved.</p>
+                    <p>Game provided by CrazyGames</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 
