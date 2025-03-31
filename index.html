@@ -3,472 +3,837 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stickman Games Online - Play Count Masters Stickman Games</title>
-    <meta name="description" content="Play Count Masters Stickman Games online for free. Enjoy the best stickman games with smooth gameplay and exciting challenges.">
-    <link rel="canonical" href="https://stickmangamesonline.store/" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <title>Strategy Game Masters - Cyberpunk Gaming Hub</title>
     <style>
         :root {
-            --apple-blue: #007AFF;
-            --apple-green: #34C759;
-            --apple-indigo: #5856D6;
-            --apple-orange: #FF9500;
-            --apple-pink: #FF2D55;
-            --apple-purple: #AF52DE;
-            --apple-red: #FF3B30;
-            --apple-teal: #5AC8FA;
-            --apple-yellow: #FFCC00;
-            --apple-gray: #8E8E93;
-            --apple-gray2: #AEAEB2;
-            --apple-gray3: #C7C7CC;
-            --apple-gray4: #D1D1D6;
-            --apple-gray5: #E5E5EA;
-            --apple-gray6: #F2F2F7;
+            --neon-blue: #00f3ff;
+            --neon-purple: #bf00ff;
+            --neon-green: #39ff14;
+            --cyber-black: #111;
+            --cyber-dark: #222;
+            --cyber-text: #e0e0e0;
         }
         
-        @keyframes gradientBG {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-        
-        @keyframes float {
-            0% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-15px);
-            }
-            100% {
-                transform: translateY(0px);
-            }
-        }
-        
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            50% {
-                transform: scale(1.05);
-                opacity: 0.8;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-        
-        @keyframes slideIn {
-            0% {
-                transform: translateX(-100px);
-                opacity: 0;
-            }
-            100% {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-20px);
-            }
-            60% {
-                transform: translateY(-10px);
-            }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-                Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-            color: #333;
-            background: linear-gradient(-45deg, #007AFF, #5856D6, #AF52DE, #007AFF);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            background-color: var(--cyber-black);
+            color: var(--cyber-text);
+            background-image: 
+                linear-gradient(0deg, transparent 24%, rgba(0, 243, 255, 0.05) 25%, rgba(0, 243, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 243, 255, 0.05) 75%, rgba(0, 243, 255, 0.05) 76%, transparent 77%, transparent),
+                linear-gradient(90deg, transparent 24%, rgba(0, 243, 255, 0.05) 25%, rgba(0, 243, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 243, 255, 0.05) 75%, rgba(0, 243, 255, 0.05) 76%, transparent 77%, transparent);
+            background-size: 50px 50px;
         }
         
-        .game-container {
-            aspect-ratio: 16 / 9;
-            width: 100%;
-            max-width: 75%;
-            margin: 0 auto;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            border: 6px solid rgba(255, 255, 255, 0.2);
-            position: relative;
-            transition: all 0.5s ease;
-        }
-        
-        .game-container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-            border-color: var(--apple-blue);
-        }
-        
-        .game-iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        
-        .header-gradient {
-            background: transparent;
+        header {
+            background: linear-gradient(90deg, var(--cyber-black) 0%, var(--cyber-dark) 100%);
+            padding: 2rem 0;
             position: relative;
             overflow: hidden;
-        }
-        
-        .header-gradient::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 10%, transparent 10.5%);
-            background-size: 20px 20px;
-            opacity: 0.3;
+            border-bottom: 2px solid var(--neon-blue);
         }
         
         .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
             position: relative;
-            z-index: 1;
+            z-index: 2;
         }
         
-        .btn-primary {
-            background: linear-gradient(90deg, var(--apple-blue), var(--apple-indigo));
-            background-size: 200% auto;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            border: 2px solid white;
-            animation: pulse 2s infinite;
-        }
-        
-        .btn-primary:hover {
-            background-position: right center;
-            transform: translateY(-2px) scale(1.05);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            animation: none;
-        }
-        
-        .btn-primary::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
-            transform: rotate(30deg);
-            transition: all 0.3s ease;
-            opacity: 0;
-        }
-        
-        .btn-primary:hover::after {
-            opacity: 1;
-            transform: rotate(30deg) translate(10%, 10%);
-        }
-        
-        .feature-card {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 12px;
-            transition: all 0.5s ease;
-            border: 3px solid transparent;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(5px);
-        }
-        
-        .feature-card:nth-child(1) {
-            border-image: linear-gradient(to bottom, var(--apple-blue), var(--apple-teal)) 1;
-            animation: slideIn 0.5s ease-out;
-        }
-        
-        .feature-card:nth-child(2) {
-            border-image: linear-gradient(to bottom, var(--apple-green), var(--apple-yellow)) 1;
-            animation: slideIn 0.5s ease-out 0.2s backwards;
-        }
-        
-        .feature-card:nth-child(3) {
-            border-image: linear-gradient(to bottom, var(--apple-purple), var(--apple-pink)) 1;
-            animation: slideIn 0.5s ease-out 0.4s backwards;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-        
-        .feature-card::before {
+        header::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            background: linear-gradient(45deg, transparent 48%, var(--neon-blue) 49%, var(--neon-blue) 51%, transparent 52%);
+            background-size: 10px 10px;
+            opacity: 0.1;
             z-index: 1;
         }
         
-        .feature-card .icon-container {
-            animation: float 3s ease-in-out infinite;
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--neon-blue);
+            text-transform: uppercase;
+            text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue), 0 0 30px var(--neon-blue);
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
         }
         
-        .main-container {
-            background-color: rgba(255, 255, 255, 0.85);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .tagline {
+            font-size: 1.2rem;
+            color: var(--neon-green);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 2rem;
-            margin-bottom: 2rem;
-            transition: all 0.3s ease;
-            transform: translateY(20px);
-            opacity: 0;
-            animation: fadeInUp 0.8s ease forwards;
-        }
-        
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .play-container {
-            animation-delay: 0.1s;
-        }
-        
-        .about-container {
-            animation-delay: 0.3s;
-        }
-        
-        .howto-container {
-            animation-delay: 0.5s;
         }
         
         .section-title {
+            font-size: 1.8rem;
+            color: var(--neon-purple);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-left: 4px solid var(--neon-purple);
+            padding-left: 1rem;
+        }
+        
+        .games-grid {
+            column-count: 4;
+            column-gap: 2rem;
+            margin: 0 auto;
+        }
+        
+        .game-card {
+            background-color: rgba(17, 17, 17, 0.8);
+            border: 1px solid var(--neon-blue);
+            border-radius: 5px;
+            overflow: hidden;
+            transition: all 0.3s ease;
             position: relative;
             display: inline-block;
-            background: linear-gradient(90deg, var(--apple-blue), var(--apple-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            color: transparent;
+            width: 100%;
+            margin-bottom: 2rem;
+            break-inside: avoid;
         }
         
-        .section-title::after {
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
+        }
+        
+        .game-card::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            top: 0;
             left: 0;
-            width: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--apple-blue), var(--apple-purple));
-            border-radius: 4px;
-            transition: width 0.5s ease;
-        }
-        
-        .section-title:hover::after {
             width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 65%, var(--neon-blue) 98%, transparent 100%);
+            opacity: 0.1;
+            pointer-events: none;
         }
         
-        .play-now-btn {
-            animation: bounce 2s infinite;
+        .game-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-bottom: 2px solid var(--neon-blue);
+            display: block;
         }
         
-        .menu-item {
-            position: relative;
+        .game-info {
+            padding: 1rem;
+        }
+        
+        .game-title {
+            font-size: 1.2rem;
+            color: var(--neon-green);
+            margin-bottom: 0.5rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .game-description {
+            font-size: 0.85rem;
+            color: var(--cyber-text);
+            margin-bottom: 0.8rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            height: 40px;
+        }
+        
+        .play-btn {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--neon-blue);
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--neon-blue);
+            border-radius: 3px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             transition: all 0.3s ease;
         }
         
-        .menu-item::after {
-            content: '';
+        .play-btn:hover {
+            background-color: var(--neon-blue);
+            color: var(--cyber-black);
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+        
+        footer {
+            background: linear-gradient(90deg, var(--cyber-black) 0%, var(--cyber-dark) 100%);
+            padding: 2rem 0;
+            margin-top: 2rem;
+            border-top: 2px solid var(--neon-purple);
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .copyright {
+            color: var(--cyber-text);
+            font-size: 0.9rem;
+        }
+        
+        .glitch-effect {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .glitch-effect::before,
+        .glitch-effect::after {
+            content: attr(data-text);
             position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
+            top: 0;
             left: 0;
-            background: white;
-            transition: width 0.3s ease;
-        }
-        
-        .menu-item:hover::after {
             width: 100%;
+            height: 100%;
         }
         
-        .nav-logo {
+        .glitch-effect::before {
+            left: 2px;
+            text-shadow: -1px 0 var(--neon-purple);
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+        
+        .glitch-effect::after {
+            left: -2px;
+            text-shadow: -1px 0 var(--neon-green);
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim2 5s infinite linear alternate-reverse;
+        }
+        
+        @keyframes glitch-anim {
+            0% {
+                clip: rect(65px, 9999px, 65px, 0);
+            }
+            5% {
+                clip: rect(32px, 9999px, 83px, 0);
+            }
+            10% {
+                clip: rect(65px, 9999px, 9px, 0);
+            }
+            15% {
+                clip: rect(81px, 9999px, 41px, 0);
+            }
+            20% {
+                clip: rect(67px, 9999px, 71px, 0);
+            }
+            25% {
+                clip: rect(0px, 9999px, 28px, 0);
+            }
+            30% {
+                clip: rect(55px, 9999px, 110px, 0);
+            }
+            100% {
+                clip: rect(0, 0, 0, 0);
+            }
+        }
+        
+        @keyframes glitch-anim2 {
+            0% {
+                clip: rect(0, 9999px, 65px, 0);
+            }
+            5% {
+                clip: rect(0, 9999px, 83px, 0);
+            }
+            10% {
+                clip: rect(0, 9999px, 9px, 0);
+            }
+            100% {
+                clip: rect(0, 0, 0, 0);
+            }
+        }
+        
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+        
+        .category-btn {
+            padding: 0.5rem 1rem;
+            background-color: transparent;
+            border: 1px solid var(--neon-purple);
+            color: var(--neon-purple);
+            border-radius: 3px;
+            cursor: pointer;
             transition: all 0.3s ease;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
-        .nav-logo:hover {
-            transform: scale(1.05);
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        .category-btn:hover,
+        .category-btn.active {
+            background-color: var(--neon-purple);
+            color: var(--cyber-black);
+            box-shadow: 0 0 10px var(--neon-purple);
         }
         
-        .glowing-border {
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto;
+            margin-bottom: 2rem;
             position: relative;
         }
         
-        .glowing-border::before {
+        .search-input {
+            width: 100%;
+            padding: 1rem;
+            background-color: rgba(17, 17, 17, 0.8);
+            border: 1px solid var(--neon-blue);
+            border-radius: 3px;
+            color: var(--cyber-text);
+            font-size: 1rem;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.4);
+        }
+        
+        .search-input::placeholder {
+            color: rgba(224, 224, 224, 0.5);
+        }
+        
+        .search-icon {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--neon-blue);
+        }
+        
+        .featured-games {
+            margin-bottom: 3rem;
+        }
+        
+        .featured-title {
+            font-size: 1.8rem;
+            color: var(--neon-green);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-left: 4px solid var(--neon-green);
+            padding-left: 1rem;
+        }
+        
+        .featured-slider {
+            display: flex;
+            overflow-x: auto;
+            gap: 2rem;
+            padding: 1rem 0;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+        }
+        
+        .featured-slider::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .featured-game {
+            min-width: 300px;
+            max-width: 300px;
+            scroll-snap-align: start;
+            background-color: rgba(17, 17, 17, 0.8);
+            border: 1px solid var(--neon-green);
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+            height: 380px;
+        }
+        
+        .featured-game::after {
             content: '';
             position: absolute;
-            top: -3px;
-            left: -3px;
-            right: -3px;
-            bottom: -3px;
-            z-index: -1;
-            background: linear-gradient(135deg, var(--apple-blue), var(--apple-purple), var(--apple-pink), var(--apple-orange));
-            background-size: 400% 400%;
-            animation: gradientBG 3s ease infinite;
-            border-radius: 15px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 65%, var(--neon-green) 98%, transparent 100%);
+            opacity: 0.1;
+            pointer-events: none;
         }
         
-        .glowing-border:hover::before {
-            opacity: 1;
+        .featured-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-bottom: 2px solid var(--neon-green);
+            display: block;
         }
         
-        .icon-pulse {
-            animation: pulse 2s infinite;
+        .featured-info {
+            padding: 1rem;
         }
         
-        .list-item {
-            transition: transform 0.3s ease;
-            cursor: default;
+        .featured-game-title {
+            font-size: 1.3rem;
+            color: var(--neon-green);
+            margin-bottom: 0.5rem;
         }
         
-        .list-item:hover {
-            transform: translateX(5px);
-            color: var(--apple-blue);
+        .featured-description {
+            font-size: 0.9rem;
+            color: var(--cyber-text);
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            height: 60px;
         }
         
-        @media (max-width: 640px) {
-            .game-container {
-                aspect-ratio: 4 / 3;
-                max-width: 95%;
+        .featured-btn {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--neon-green);
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--neon-green);
+            border-radius: 3px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        
+        .featured-btn:hover {
+            background-color: var(--neon-green);
+            color: var(--cyber-black);
+            box-shadow: 0 0 10px var(--neon-green);
+        }
+        
+        .trending-tag {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: var(--neon-purple);
+            color: var(--cyber-black);
+            padding: 0.3rem 0.6rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+        
+        .new-tag {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: var(--neon-green);
+            color: var(--cyber-black);
+            padding: 0.3rem 0.6rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+        
+        @media (max-width: 1024px) {
+            .games-grid {
+                column-count: 3;
+                column-gap: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .games-grid {
+                column-count: 2;
+                column-gap: 1.5rem;
+            }
+            
+            .featured-game {
+                min-width: 250px;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .tagline {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .games-grid {
+                column-count: 1;
+                column-gap: 1rem;
+            }
+            
+            .featured-game {
+                min-width: 100%;
+            }
+            
+            .logo {
+                font-size: 1.8rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            .categories {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .category-btn {
+                width: 100%;
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
-    <header class="header-gradient text-white py-8 px-4 sm:px-6 lg:px-8">
-        <div class="container mx-auto header-content">
-            <nav class="flex justify-between items-center mb-8">
-                <a href="/" class="nav-logo text-2xl font-bold">StickmanGamesOnline</a>
-                <div class="flex space-x-6">
-                    <a href="#features" class="menu-item hover:text-apple-gray5">Features</a>
-                    <a href="#about" class="menu-item hover:text-apple-gray5">About</a>
-                    <a href="#play" class="menu-item hover:text-apple-gray5">Play Now</a>
-                </div>
-            </nav>
-            
-            <div class="text-center py-8">
-                <h1 class="text-4xl sm:text-5xl font-bold mb-4 drop-shadow-lg">Count Masters: Stickman Games</h1>
-                <p class="text-xl mb-8 drop-shadow-md">Experience the thrilling world of stickman combat in this addictive multiplayer game!</p>
-                <a href="#play" class="play-now-btn btn-primary inline-block px-8 py-4 rounded-lg font-semibold text-lg">Play Now</a>
-            </div>
+    <header>
+        <div class="header-content">
+            <h1 class="logo"><span class="glitch-effect" data-text="STRATEGY GAME MASTERS">STRATEGY GAME MASTERS</span></h1>
+            <p class="tagline">The Ultimate Cyberpunk Gaming Experience</p>
         </div>
     </header>
-
-    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <section id="play" class="mb-16 main-container play-container">
-            <h2 class="text-3xl font-bold text-center mb-10 section-title">Play Count Masters: Stickman Games</h2>
-            <div class="w-full flex justify-center">
-                <div class="game-container glowing-border">
-                    <iframe src="https://www.crazygames.com/embed/count-masters-stickman-games" class="game-iframe" allow="fullscreen" allowfullscreen title="Count Masters: Stickman Games"></iframe>
+    
+    <div class="container">
+        <div class="search-box">
+            <input type="text" class="search-input" placeholder="Search for games..." id="searchInput">
+            <span class="search-icon">🔍</span>
+        </div>
+        
+        <div class="categories">
+            <button class="category-btn active">All</button>
+            <button class="category-btn">Action</button>
+            <button class="category-btn">Puzzle</button>
+            <button class="category-btn">Strategy</button>
+            <button class="category-btn">Racing</button>
+            <button class="category-btn">Arcade</button>
+        </div>
+        
+        <section class="featured-games">
+            <h2 class="featured-title">Featured Games</h2>
+            <div class="featured-slider">
+                <div class="featured-game">
+                    <span class="trending-tag">TRENDING</span>
+                    <img src="https://img.cdn.famobi.com/portal/html5games/images/tmp/GiantRushTeaser.jpg" alt="Giant Rush" class="featured-img">
+                    <div class="featured-info">
+                        <h3 class="featured-game-title">Giant Rush</h3>
+                        <p class="featured-description">Battle giants and collect treasures in this action adventure.</p>
+                        <a href="https://play.famobi.com/giant-rush" class="featured-btn" target="_blank">Play Now</a>
+                    </div>
+                </div>
+                
+                <div class="featured-game">
+                    <span class="trending-tag">TRENDING</span>
+                    <img src="https://img.cdn.famobi.com/portal/html5games/images/tmp/MotoX3mTeaser.jpg" alt="Moto X3M" class="featured-img">
+                    <div class="featured-info">
+                        <h3 class="featured-game-title">Moto X3M</h3>
+                        <p class="featured-description">Race motorcycles and perform stunts in this adrenaline-fueled game.</p>
+                        <a href="https://play.famobi.com/moto-x3m" class="featured-btn" target="_blank">Play Now</a>
+                    </div>
+                </div>
+                
+                <div class="featured-game">
+                    <span class="new-tag">NEW</span>
+                    <img src="https://img.cdn.famobi.com/portal/html5games/images/tmp/TowerFallTeaser.jpg" alt="Tower Fall" class="featured-img">
+                    <div class="featured-info">
+                        <h3 class="featured-game-title">Tower Fall</h3>
+                        <p class="featured-description">Stack blocks and build the highest tower in this arcade challenge.</p>
+                        <a href="https://play.famobi.com/tower-fall" class="featured-btn" target="_blank">Play Now</a>
+                    </div>
+                </div>
+                
+                <div class="featured-game">
+                    <img src="https://img.cdn.famobi.com/portal/html5games/images/tmp/CutTheRopeTeaser.jpg" alt="Cut The Rope" class="featured-img">
+                    <div class="featured-info">
+                        <h3 class="featured-game-title">Cut The Rope</h3>
+                        <p class="featured-description">Feed Om Nom candy by cutting ropes in this physics puzzle game.</p>
+                        <a href="https://play.famobi.com/cut-the-rope" class="featured-btn" target="_blank">Play Now</a>
+                    </div>
                 </div>
             </div>
         </section>
-
-        <section id="about" class="mb-16 main-container about-container">
-            <h2 class="text-3xl font-bold text-center mb-10 section-title">About The Game</h2>
-            <div class="bg-white p-8 rounded-xl shadow-md border-2 border-apple-teal">
-                <p class="mb-4">Count Masters: Stickman Games is an exciting multiplayer game where you control a group of stickman warriors. Your goal is to grow your army by collecting stickmen and defeating enemies in various challenging levels.</p>
-                <p class="mb-4">The game features simple yet addictive gameplay mechanics. You start with a small group of stick figures and must navigate through obstacles while collecting more teammates. Face off against enemy groups in epic battles where numbers matter!</p>
-                <p>With colorful graphics, smooth animations, and progressively challenging levels, Count Masters: Stickman Games offers hours of entertainment for players of all ages.</p>
+        
+        <section class="all-games">
+            <h2 class="section-title">All Games</h2>
+            <div class="games-grid" id="gamesGrid">
+                <!-- Games will be dynamically added here -->
             </div>
         </section>
-
-        <section id="features" class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <div class="feature-card p-6">
-                <div class="icon-container w-16 h-16 bg-apple-blue rounded-full flex items-center justify-center text-white mb-6 mx-auto">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 icon-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                </div>
-                <h2 class="text-2xl font-bold mb-4 text-center">Fast-Paced Action</h2>
-                <p class="text-center">Experience thrilling gameplay with quick decisions and rapid progression through exciting levels.</p>
-            </div>
-            
-            <div class="feature-card p-6">
-                <div class="icon-container w-16 h-16 bg-apple-green rounded-full flex items-center justify-center text-white mb-6 mx-auto">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 icon-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                </div>
-                <h2 class="text-2xl font-bold mb-4 text-center">Army Building</h2>
-                <p class="text-center">Grow your stickman army from a small group to a massive crowd and overwhelm your opponents.</p>
-            </div>
-            
-            <div class="feature-card p-6">
-                <div class="icon-container w-16 h-16 bg-apple-purple rounded-full flex items-center justify-center text-white mb-6 mx-auto">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 icon-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                    </svg>
-                </div>
-                <h2 class="text-2xl font-bold mb-4 text-center">Multiple Levels</h2>
-                <p class="text-center">Progress through various challenging stages with increasing difficulty and unique obstacles.</p>
-            </div>
-        </section>
-
-        <section class="bg-white p-8 rounded-xl shadow-md mb-16 border-2 border-apple-orange main-container howto-container">
-            <h2 class="text-3xl font-bold text-center mb-10 section-title">How To Play</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                    <ol class="list-decimal pl-5 space-y-4">
-                        <li class="list-item">Control your stickman army by dragging left or right.</li>
-                        <li class="list-item">Collect more stickmen by running over number gates.</li>
-                        <li class="list-item">Avoid obstacles and enemy armies that are larger than yours.</li>
-                        <li class="list-item">Defeat enemies by having a larger army when you collide.</li>
-                        <li class="list-item">Complete all challenges to progress to the next level.</li>
-                    </ol>
-                </div>
-                <div>
-                    <p class="mb-4">The game is easy to learn but challenging to master. Your strategy will determine how successfully you can grow and maintain your army.</p>
-                    <p>Perfect for quick gaming sessions or extended play, Count Masters: Stickman Games offers entertainment value for everyone!</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="bg-gray-800 text-white py-8 px-4">
-        <div class="container mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <h2 class="text-2xl font-bold">StickmanGamesOnline</h2>
-                    <p>The best place to play stickman games online.</p>
-                </div>
-                <div>
-                    <p>&copy; 2023 StickmanGamesOnline. All rights reserved.</p>
-                    <p>Game provided by CrazyGames</p>
-                </div>
-            </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <p class="copyright">© 2025 Strategy Game Masters - The Ultimate Cyberpunk Gaming Hub</p>
         </div>
     </footer>
+    
+    <script>
+        // Game data
+        const games = [
+            {
+                title: "Rise Up",
+                img: "https://img.cdn.famobi.com/portal/html5games/images/tmp/RiseUpTeaser.jpg",
+                url: "https://play.famobi.com/rise-up",
+                description: "Protect your balloon as it rises through challenging obstacles.",
+                category: "Arcade"
+            },
+            {
+                title: "Train Miner",
+                img: "https://img.cdn.famobi.com/portal/html5games/images/tmp/TrainMinerTeaser.jpg",
+                url: "https://play.famobi.com/train-miner",
+                description: "Collect resources and expand your railroad empire.",
+                category: "Strategy"
+            },
+            {
+                title: "Giant Rush",
+                img: "https://img.cdn.famobi.com/portal/html5games/images/tmp/GiantRushTeaser.jpg",
+                url: "https://play.famobi.com/giant-rush",
+                description: "Battle giants and collect treasures in this action adventure.",
+                category: "Action"
+            },
+            {
+                title: "Western Sniper",
+                img: "https://img.cdn.famobi.com/portal/html5games/images/tmp/WesternSniperTeaser.jpg",
+                url: "https://play.famobi.com/western-sniper",
+                description: "Test your precision and reflexes in this western-themed shooter.",
+                category: "Action"
+            },
+            {
+                title: "Go Escape",
+                img: "https://img.cdn.famobi.com/portal/html5games/images/tmp/GoEscapeTeaser.jpg",
+                url: "https://play.famobi.com/go-escape",
+                description: "Navigate through challenging mazes and escape numerous obstacles.",
+                category: "Puzzle"
+            },
+            {
+                title: "Color Fill 3D",
+                img: "https://img.cdn.famobi.com/portal/html5games/images/tmp/ColorFill3dTeaser.jpg",
+                url: "https://play.famobi.com/color-fill-3d",
+                description: "Fill the board with colors in this relaxing 3D puzzle game.",
+                category: "Puzzle"
+            },
+            {
+                title: "Spot the Cat",
+                img: "https://img.cdn.famobi.com/portal/html5games/images/tmp/SpotTheCatTeaser.jpg",
+                url: "https://play.famobi.com/spot-the-cat",
+                description: "Find the hidden cats in various challenging environments.",
+                category: "Puzzle"
+            },
+            {
+                title: "Color Roll 3D",
+                img: "https://img.cdn.famobi.com/portal/html5games/images/tmp/ColorRoll3dTeaser.jpg",
+                url: "https://play.famobi.com/color-roll-3d",
+                description: "Roll the ball and match colors in this addictive 3D game.",
+                category: "Puzzle"
+            },
+            {
+                title: "Color Water Sort 3D",
+                img: "https://img.cdn.famobi.com/portal/html5games/images/tmp/ColorWaterSort3dTeaser.jpg",
+                url: "https://play.famobi.com/color-water-sort-3d",
+                description: "Sort the colored water and solve challenging liquid puzzles.",
+                category: "Puzzle"
+            },
+            {
+                title: "Braindom",
+                img: "https://img.cdn.famobi.com/portal/html5games/images/tmp/BraindomTeaser.jpg",
+                url: "https://play.famobi.com/braindom",
+                description: "Test your logical thinking with brain-teasing puzzles.",
+                category: "Puzzle"
+            },
+            {
+                title: "Sort It",
+                img: "https://img.cdn.famobi.com/portal/html5games/images/tmp/SortItTeaser.jpg",
+                url: "https://play.famobi.com/sort-it",
+                description: "Sort objects by color and type in this satisfying game.",
+                category: "Puzzle"
+            },
+            {
+                title: "Cube Match",
+                img: "https://img.cdn.famobi.com/portal/html5games/images/tmp/CubeMatchTeaser.jpg",
+                url: "https://play.famobi.com/cube-match",
+                description: "Match colorful cubes and create powerful combos.",
+                category: "Puzzle"
+            },
+            {
+                title: "Parking Jam",
+                img: "https://img.cdn.famobi.com/portal/html5games/images/tmp/ParkingJamTeaser.jpg",
+                url: "https://play.famobi.com/parking-jam",
+                description: "Solve parking puzzles by moving cars in the right order.",
+                category: "Puzzle"
+            },
+            {
+                title: "Fashion Battle",
+                img: "https://img.cdn.famobi.com/portal/html5games/images/tmp/FashionBattleTeaser.jpg",
+                url: "https://play.famobi.com/fashion-battle",
+                description: "Create stylish outfits and win fashion competitions.",
+                category: "Arcade"
+            },
+            {
+                title: "Fruit Party",
+                img: "https://img.cdn.famobi.com/portal/html5games/images/tmp/FruitPartyTeaser.jpg",
+                url: "https://play.famobi.com/fruit-party",
+                description: "Match fruits and create delicious combinations in this match-3 game.",
+                category: "Puzzle"
+            },
+            {
+                title: "Guess Their Answer",
+                img: "https://img.cdn.famobi.com/portal/html5games/images/tmp/GuessTheirAnswerTeaser.jpg",
+                url: "https://play.famobi.com/guess-their-answer",
+                description: "Test how well you know what others think in this social quiz game.",
+                category: "Puzzle"
+            },
+            {
+                title: "Thief Puzzle",
+                img: "https://img.cdn.famobi.com/portal/html5games/images/tmp/ThiefPuzzleTeaser.jpg",
+                url: "https://play.famobi.com/thief-puzzle",
+                description: "Use your wit to solve stealth puzzles and become the master thief.",
+                category: "Puzzle"
+            },
+            {
+                title: "Neon Rider",
+                img: "https://img.cdn.famobi.com/portal/html5games/images/tmp/NeonRiderTeaser.jpg",
+                url: "https://play.famobi.com/neon-rider",
+                description: "Race through neon-lit tracks in this cyberpunk-themed racing game.",
+                category: "Racing"
+            },
+            {
+                title: "Speed Master",
+                img: "https://img.cdn.famobi.com/portal/html5games/images/tmp/SpeedMasterTeaser.jpg",
+                url: "https://play.famobi.com/speed-master",
+                description: "Test your reflex skills in this fast-paced speed challenge.",
+                category: "Action"
+            },
+            {
+                title: "Alien Attack",
+                img: "https://img.cdn.famobi.com/portal/html5games/images/tmp/AlienAttackTeaser.jpg",
+                url: "https://play.famobi.com/alien-attack",
+                description: "Defend Earth from invading aliens in this action-packed shooter.",
+                category: "Action"
+            },
+            {
+                title: "Peet Sneak",
+                img: "https://img.cdn.famobi.com/portal/html5games/images/tmp/PeetSneakTeaser.jpg",
+                url: "https://play.famobi.com/peet-sneak",
+                description: "Help Peet sneak past enemies in this stealth action game.",
+                category: "Action"
+            },
+            {
+                title: "Cut The Rope",
+                img: "https://img.cdn.famobi.com/portal/html5games/images/tmp/CutTheRopeTeaser.jpg",
+                url: "https://play.famobi.com/cut-the-rope",
+                description: "Feed Om Nom candy by cutting ropes in this physics puzzle.",
+                category: "Puzzle"
+            },
+            {
+                title: "Toilet Run",
+                img: "https://img.cdn.famobi.com/portal/html5games/images/tmp/ToiletRunTeaser.jpg",
+                url: "https://play.famobi.com/toilet-run",
+                description: "Race to find toilets in this funny and challenging game.",
+                category: "Arcade"
+            },
+            {
+                title: "Block Painter",
+                img: "https://img.cdn.famobi.com/portal/html5games/images/tmp/BlockPainterTeaser.jpg",
+                url: "https://play.famobi.com/block-painter",
+                description: "Paint blocks and create beautiful masterpieces in this relaxing game.",
+                category: "Puzzle"
+            }
+        ];
+        
+        // Populate games grid
+        const gamesGrid = document.getElementById('gamesGrid');
+        const searchInput = document.getElementById('searchInput');
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        
+                    // Function to display games
+        function displayGames(gamesArray) {
+            gamesGrid.innerHTML = '';
+            
+            // Use fixed heights for a more consistent design
+            gamesArray.forEach(game => {
+                const gameCard = document.createElement('div');
+                gameCard.className = 'game-card';
+                
+                // Use consistent heights for a cleaner look
+                gameCard.innerHTML = `
+                    <img src="${game.img}" alt="${game.title}" class="game-img" style="height: 160px;">
+                    <div class="game-info">
+                        <h3 class="game-title">${game.title}</h3>
+                        <p class="game-description">${game.description.length > 80 ? game.description.substring(0, 80) + '...' : game.description}</p>
+                        <a href="${game.url}" class="play-btn" target="_blank">Play Now</a>
+                    </div>
+                `;
+                
+                gamesGrid.appendChild(gameCard);
+            });
+        }
+        
+        // Initialize games display
+        displayGames(games);
+        
+        // Search functionality
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            
+            const filteredGames = games.filter(game => 
+                game.title.toLowerCase().includes(searchTerm) || 
+                game.description.toLowerCase().includes(searchTerm)
+            );
+            
+            displayGames(filteredGames);
+        });
+        
+        // Category filtering
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const category = this.textContent;
+                
+                if (category === 'All') {
+                    displayGames(games);
+                } else {
+                    const filteredGames = games.filter(game => 
+                        game.category === category
+                    );
+                    
+                    displayGames(filteredGames);
+                }
+            });
+        });
+    </script>
 </body>
-</html> 
+</html>
